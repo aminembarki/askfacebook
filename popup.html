@@ -4,53 +4,46 @@
 	    <meta charset="utf-8">
 		<meta name="description" content="A basic template for a Chrome Extension using Twitter Bootstrap 3">
 		<meta name="author" content="Elliot Hesp">
-		
+
 		<title>Facebook Graph Shortcuts</title>
-		
+
 		<!-- Scripts -->
 		<script src="js/jquery-2.0.3.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		
+		<script src="js/popup.js"></script>
+
 		<!-- Cascading Style Sheets -->
-		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<link href="css/custom.css" rel="stylesheet" media="screen">		
+		<link href="css/fontello.css" rel="stylesheet" media="screen">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
 	</head>
-	
+
 	<body>
-	
-		<header>
-			<button type="button" class="btn btn-primary btn-lg btn-block">Get Facebook ID</button>
-		</header>
-		
-		<section>
-			<div>
 
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">PERSONAL SEARCH</a></li>
-					<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">LOCATION SEARCH</a></li>
-					<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Help</a></li>
-				</ul>
-
-				<!-- Tab panes -->
-				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane active" id="home">
-						<ul>
-						   <li><a href="">Posts that the person commented on?</a>
-						   <li><a href="">Which photos does this person like?</a>
-						   <li><a href="">Photos made of this person</a>
-						   <li><a href="">In which photos is this person tagged?</a>
-						   <li><a href="">What photos did the person comment on? With what comment?</a>
-						   <li><a href="">What photos did the friends upload?</a>
-						</li>
-					</ul></div>
-					<div role="tabpanel" class="tab-pane" id="profile">...</div>
-					<div role="tabpanel" class="tab-pane" id="messages">...</div>
-					<div role="tabpanel" class="tab-pane" id="settings">...</div>
-				</div>
-
+		<div id="header">
+			<div id="logo">
+				<a href="https://github.com/aminembarki/graphSearch" target="_blank"><img src="img/icon48.png"/> GraphSearch</a>
 			</div>
-		</section>
-		
+			<div class="actions">
+				<button class="btn btn-clear none"><i class="icon-clear"></i></button>
+				<button class="btn btn-settings"><i class="icon-cog"></i></button>
+			</div>
+		</div>
+		<div id="content">
+			<div id="preloader">
+				<div class="clock">
+					<div class="arrow_sec"></div>
+					<div class="arrow_min"></div>
+				</div>
+			</div>
+			<div class="ask">
+				<div class="search">
+					<button class="button button--antiman button--round-l button--text-medium"><i class="button__icon icon icon-map-marker"></i><span>Get FB ID</span></button>
+					<span class="currentid"></span>
+				</div>
+				<ul class="feed">
+
+				</ul>
+			</div>
+		</div>
 	</body>
 </html>

@@ -1,20 +1,474 @@
-/**
- * Chrome Extension Twitter Bootstrap 3 Template
- * Custom CSS
- *	
- */
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic);
 
-body, section {			/* Change width and height to own preferences */
-	width: 500px;
-	height: 400px;
-	overflow-x: hidden;
+body {
+	width: 400px;
+	height: 500px;
+	margin: 0;
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+	overflow: hidden;
+	background: #F4F5FB;
 }
 
-/* Basic style tweaks */
-section { padding: 5px;}
-.navbar { margin-bottom: 2px; }
+a, button {
+	outline: none;
+}
 
-/* Scroll Bar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); }
-::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:window-inactive  { background: red; }
+#header {
+	background: #ffffff;
+	height: 50px;
+	border-bottom: 1px solid #E1E4F2;
+}
+
+#logo {
+	float: left;
+}
+#logo  a{
+	font-family: fantasy;
+	color: #363433;
+	float: left;
+	text-align: left;
+	padding-top: 10px;
+	margin: 6px;
+	text-decoration: inherit;
+}
+#logo img {
+	height: 30px;
+	/* padding: 10px; */
+	float: left;
+	display: inline-block;
+	margin-top: -5px;
+}
+
+#logo img:hover {
+	opacity: 0.98;
+}
+
+.actions {
+	position: absolute;
+	top:0;
+	right: 0;
+	margin:10px;
+}
+
+#content {
+	position: relative;
+	height: 450px;
+}
+
+.feed {
+	padding: 0;
+	margin: 0;
+}
+
+.feed li {
+	width: 384px;
+	list-style: none;
+	overflow: hidden;
+	cursor: pointer;
+	position: relative;
+	margin: 8px;
+}
+
+.feed li a:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.feed li a {
+	display: block;
+	text-decoration: none;
+	transition: all .3s ease;
+	background: #ffffff;
+	border: 1px solid #e8ebef;
+}
+
+.feed li.unread a {
+	background: #FEFFDF;
+}
+
+.feed li a:hover {
+	background: #fafafa;
+}
+
+.feed li .image {
+	margin: -1px;
+	height: 200px;
+	overflow: hidden;
+}
+
+.feed li .image img {
+	width: 100%;
+}
+
+.feed li .title {
+	color: #444;
+	font-weight: bold;
+	padding: 10px;
+	font-size: 16px;
+	overflow: hidden;
+	text-decoration: none;
+}
+
+.feed li .description {
+	color: #666;
+	padding: 0 10px;
+}
+
+.feed li .buttons {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	float: right;
+	margin: 10px;
+}
+
+.feed li .buttons a {
+	background: #ecf0f1;
+}
+
+.feed li .buttons a:hover {
+	background: #ffffff;
+}
+
+.feed li .buttons .share-block {
+	float: left;
+	display: none;
+}
+
+.feed li .buttons .share-block a {
+	display: inline-block;
+	font-size: 13px;
+	margin-right: 3px;
+}
+
+.feed li .time {
+	margin: 8px 10px;
+	float: left;
+	color: #666;
+	font-size: 12px;
+	line-height: 27px;
+}
+
+.ask {
+	overflow-y: auto;
+	position: relative;
+	width: 100%;
+	height: 450px;
+	outline: none;
+}
+
+.buttons {
+	float: right;
+	margin: 10px;
+}
+
+.btn {
+	display: block;
+	background: #ecf0f1;
+	font-size: 16px;
+	padding: 6px;
+	border-radius: 3px;
+	color: #333;
+	border: 1px solid #ecf0f1;
+	transition: 0.3s ease;
+}
+
+.btn:hover {
+	background: #ffffff;
+}
+
+.actions .btn, .buttons .btn {
+	display: inline-block;
+}
+
+.btn-more {
+	font-size: 12px;
+	padding: 5px 10px;
+	float: right;
+}
+
+.btn-share {
+	font-size: 13px;
+	margin-right: 3px;
+	float: left;
+}
+
+.btn-share.active {
+	background: #fff;
+}
+
+#preloader {
+	background: #fff;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	z-index: 999;
+	display: none;
+}
+
+#preloader .clock {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 36px;
+	height: 36px;
+	margin: -20px 0 0 -20px;
+	border: 2px solid #ccc;
+	border-radius: 20px;
+}
+
+#preloader .clock .arrow_sec {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	border: 1px solid rgba(0, 0, 0, 0);
+	border-top: 15px solid #ccc;
+	margin: -16px 0 0 -1px;
+	background: #666;
+	-webkit-animation: rotation 1s linear 0s infinite;
+	animation: rotation 1s linear 0s infinite;
+	-webkit-transform-origin: center bottom;
+	transform-origin: center bottom;
+}
+
+#preloader .clock .arrow_min {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	border: 1px solid rgba(0, 0, 0, 0);
+	border-top: 11px solid #888;
+	margin: -12px 0 0 -1px;
+	background: #666;
+	-webkit-animation: rotation 6s linear 0s infinite;
+	animation: rotation 6s linear 0s infinite;
+	-webkit-transform-origin: center bottom;
+	transform-origin: center bottom;
+}
+
+@-webkit-keyframes rotation {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes rotation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.jelatin {
+	-webkit-animation: jelatin;
+	animation: jelatin;
+	-webkit-animation-duration: 500ms;
+	animation-duration: 500ms;
+	-webkit-animation-delay: 0;
+	animation-delay: 0;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes jelatin {
+	from, to {
+		opacity: 1;
+	}
+	25% {
+		-webkit-transform: scale(.9, 1.1);
+	}
+	50% {
+		-webkit-transform: scale(1.1, .9);
+	}
+	75% {
+		-webkit-transform: scale(.95, 1.05);
+	}
+}
+
+@keyframes jelatin {
+	from, to {
+		opacity: 1;
+	}
+	25% {
+		-webkit-transform: scale(.9, 1.1);
+		transform: scale(.9, 1.1);
+	}
+	50% {
+		-webkit-transform: scale(1.1, .9);
+		transform: scale(1.1, .9);
+	}
+	75% {
+		-webkit-transform: scale(.95, 1.05);
+		transform: scale(.95, 1.05);
+	}
+}
+
+.none {
+	display: none !important;
+}
+
+
+
+/* Common button styles */
+.button {
+	float: left;
+	min-width: 150px;
+	max-width: 250px;
+	display: block;
+	margin: 1em;
+	padding: 1em 2em;
+	border: none;
+	background: none;
+	color: inherit;
+	vertical-align: middle;
+	position: relative;
+	z-index: 1;
+	-webkit-backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+}
+.button:focus {
+	outline: none;
+}
+.button > span {
+	vertical-align: middle;
+}
+
+/* Sizes */
+.button--size-s {
+	font-size: 14px;
+}
+.button--size-m {
+	font-size: 16px;
+}
+.button--size-l {
+	font-size: 18px;
+}
+/* Typography and Roundedness */
+.button--text-upper {
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+.button--text-thin {
+	font-weight: 300;
+}
+.button--text-medium {
+	font-weight: 500;
+}
+.button--text-thick {
+	font-weight: 600;
+}
+.button--round-s {
+	border-radius: 5px;
+}
+.button--round-m {
+	border-radius: 15px;
+}
+.button--round-l {
+	border-radius: 40px;
+}
+
+/* Borders */
+.button--border-thin {
+	border: 1px solid;
+}
+.button--border-medium {
+	border: 2px solid;
+}
+.button--border-thick {
+	border: 3px solid;
+}
+
+/* Antiman */
+.button--antiman {
+	background: none;
+	border: none;
+	height: 60px;
+}
+.button--antiman.button--inverted,
+.button--antiman.button--inverted-alt {
+	-webkit-transition: color 0.3s;
+	transition: color 0.3s;
+	-webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+	transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+.button--antiman > span {
+	padding-left: 0.35em;
+}
+.button--antiman::before,
+.button--antiman::after {
+	content: '';
+	z-index: -1;
+	border-radius: inherit;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+	-webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+	transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+.button--antiman::before {
+	border: 2px solid #37474f;
+	opacity: 0;
+	-webkit-transform: scale3d(1.2, 1.2, 1);
+	transform: scale3d(1.2, 1.2, 1);
+}
+.button--antiman.button--border-thin::before {
+	border-width: 1px;
+}
+.button--antiman.button--border-medium::before {
+	border-width: 2px;
+}
+.button--antiman.button--border-thick::before {
+	border-width: 3px;
+}
+.button--antiman.button--inverted::before {
+	border-color: #7986cb;
+}
+.button--antiman.button--inverted-alt::before {
+	border-color: #3f51b5;
+}
+.button--antiman::after {
+	background: #fff;
+}
+.button--antiman.button--inverted::after {
+	background: #7986cb;
+}
+.button--antiman.button--inverted-alt::after {
+	background: #3f51b5;
+}
+.button--antiman.button--inverted:hover {
+	color: #7986cb;
+}
+.button--antiman.button--inverted-alt:hover {
+	color: #3f51b5;
+}
+.button--antiman:hover::before {
+	opacity: 1;
+	-webkit-transform: scale3d(1, 1, 1);
+	transform: scale3d(1, 1, 1);
+}
+.button--antiman:hover::after {
+	opacity: 0;
+	-webkit-transform: scale3d(0.8, 0.8, 1);
+	transform: scale3d(0.8, 0.8, 1);
+}
+
+.search{
+	display: table;
+	margin: auto;
+}

@@ -3,10 +3,17 @@
 	"name": "Facebook Graph Shortcuts",
 	"description": " Facebook Graph Search Engine Chrome Extension ",
 	"version": "1.0",
+	"content_scripts": [
+	  {
+		"matches": ["http://*/*", "https://*/*"],
+		"js": ["js/content.js"],
+		"run_at": "document_idle"
+	  }
+	],
 	"permissions": [
-		"storage",
-	    "tabs",
-	  	"activeTab"
+		"activeTab",
+	    "http://*/*",
+	    "https://*/*"
 	],
 	"icons": { 
 		"16": "img/icon16.png",
