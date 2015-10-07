@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic);
 body {
-  width: 400px;
-  height: 500px;
+  min-width: 400px;
+  min-height: 500px;
   margin: 0;
   font-family: "PT Sans", sans-serif;
   font-size: 14px;
@@ -170,7 +170,7 @@ button {
   background: #fff;
 }
 #preloader {
-  background: #fff;
+  background: #F4F5FB;
   top: 0;
   right: 0;
   bottom: 0;
@@ -463,4 +463,24 @@ button {
 }
 .questions li a select {
   font-weight: bold;
+}
+.error-wrapper {
+  text-align: center;
+}
+.error-wrapper .error-box {
+  display: none;
+}
+.error-wrapper .error-box .i {
+  display: block;
+}
+.error-wrapper .error-box .icon-attention {
+  font-size: 11em;
+  color: #81B0E7;
+}
+.error-wrapper .error-box button {
+  float: none;
+  margin: 20px auto;
+}
+.hide {
+  display: none;
 }

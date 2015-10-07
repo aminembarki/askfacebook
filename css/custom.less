@@ -1,8 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic);
 
 body {
-	width: 400px;
-	height: 500px;
+	min-width: 400px;
+    min-height: 500px;
 	margin: 0;
 	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
@@ -200,7 +200,7 @@ a, button {
 }
 
 #preloader {
-	background: #fff;
+	background: #F4F5FB;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -518,4 +518,26 @@ a, button {
 	  }
 	}
   }
+}
+
+.error-wrapper{
+  text-align: center;
+  .error-box {
+	display: none;
+	.i{
+	  display: block;
+	}
+	.icon-attention{
+	  font-size: 11em;
+	  color: #81B0E7;
+	}
+	button{
+	  float: none;
+	  margin: 20px auto;
+	}
+  }
+}
+
+.hide{
+  display: none;
 }

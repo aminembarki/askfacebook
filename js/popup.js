@@ -1,26 +1,42 @@
+htmlContext = "";
 
 
 $(document).ready(function () {
 
-    var htmlContext = "";
-    chrome.browserAction.setBadgeBackgroundColor({color: "#ff0000"});
-    chrome.browserAction.getBadgeText({}, function (Badge_txt) {
-        var mark = $('.btn-clear');
-        Badge_txt == '' ? mark.addClass('none') : mark.removeClass('none');
 
+
+
+
+
+
+    //chrome.tabs.getSelected(null, function(tab) {
+    //    chrome.tabs.sendRequest(tab.id, {method: "getContext"}, function(response) {
+    //        if(response.method=="getContext"){
+    //            htmlContext = response.data;
+    //            console.log("context loaded");
+    //        }
+    //    });
+    //
+    //});
+
+
+    chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
+        console.log("context query");
+        if(tabs[0].url.match('facebook.com') == undefined){
+            $('#fb-only').show();
+            $('.ask').hide();
+            console.log("context only");
+        }else{
+            chrome.tabs.sendRequest(tabs[0].id, {method: "getContext"}, function(response) {
+                        if(response.method=="getContext"){
+                            htmlContext = response.data;
+                            console.log("context loaded");
+                        }
+                    });
+            console.log("context getContext");
+        }
     });
 
-    chrome.tabs.getSelected(null, function(tab) {
-        chrome.tabs.sendRequest(tab.id, {method: "getContext"}, function(response) {
-            if(response.method=="getContext"){
-                htmlContext = response.data;
-                console.log(htmlContext);
-            }
-        });
-    });
-
-
-    var fbid = "";
 
 
 
