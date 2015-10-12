@@ -21,8 +21,24 @@ var chromeApi = function () {
         });
         return val;
     };
-    this.extractor = function ($dom) {
+    this.getCurrentId = function ($dom) {
 
+        var m,
+            re = /(fb:\/\/profile\/)?(=|:|")+(\d)+/g;
+
+        if ((m = re.exec($dom)) !== null){
+           return  m[0].replace( /^\D+/g, '');
+        }
+        return  null;
+    };
+    this.getMyId = function ($dom) {
+        var m,
+            re = /(profile_pic_header_)+(\d)+/g;
+
+        if ((m = re.exec($dom)) !== null) {
+            return  m[0].replace( /^\D+/g, '');
+        }
+        return  null;
     };
 
 }
