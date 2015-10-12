@@ -1,0 +1,8 @@
+search/single/users/112463092102121/residents/present/females/intersect
+
+search/str/single%2Bwomen%2Bwho%2Blive%2Bin%2Btangier/keywords_users
+
+
+search/str/women%2Bwho%2Blive%2Bin%2Bsan%2Bfrancisco/keywords_users
+
+my%2Bfriends%2Bwho%2Blive%2Bin%2Bmorocco/keywords_users
