@@ -20,7 +20,6 @@
     "http://*/*",
     "https://*/*"
   ],
-  "default_locale": "en",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -34,7 +33,7 @@
     "default_popup": "src/index.html"
   },
   "omnibox": {
-    "keyword": "extensionizr"
+    "keyword": "askfacebook"
   },
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
   "web_accessible_resources": [
