@@ -24,7 +24,7 @@ var chromeApi = function () {
     this.getCurrentId = function ($dom) {
 
         var m,
-            re = /(fb:\/\/profile\/)?(=|:|")+(\d)+/g;
+            re = /(fb:\/\/profile\/)+(\d)+/g;
 
         if ((m = re.exec($dom)) !== null){
            return  m[0].replace( /^\D+/g, '');

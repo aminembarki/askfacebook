@@ -5,22 +5,17 @@
      */
     var coreController = function ($scope, localStorageService) {
 
+        var api = new chromeApi();
+
         this.getProfile = function () {
-              this.loadDom().extractor();
-        };
-
-        this.loadDom = function () {
-            var dom = null;
-
-            return dom;
+              if(this.isFacebook()){
+                  var data = api.loadDom();
+                  this.save('profile_id',api.getCurrentId(data));
+                  this.save('my_id',api.getMyId(data));
+              }
         };
         this.isFacebook = function () {
-            var val = false;
-
-            return val;
-        };
-        this.extractor = function($dom){
-
+            return api.isFacebook();
         };
         this.save = function (key, val) {
             console.log(this.loadDom());
@@ -29,9 +24,17 @@
 
     }
 
+    var errorpageDirective = function(){
+        return {
+            restrict: 'E',
+            templateUrl: 'views/error-page.html'
+        };
+    }
+
 
     angular
         .module('coreController', ['LocalStorageModule'])
-        .controller('coreController', coreController);
+        .controller('coreController', coreController)
+        .directive('errorPage', errorpageDirective);
 
-})();
+})(chromeApi);
