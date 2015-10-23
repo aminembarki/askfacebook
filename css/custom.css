@@ -468,7 +468,7 @@ button {
   text-align: center;
 }
 .error-wrapper .error-box {
-  display: none;
+  display: block;
 }
 .error-wrapper .error-box .i {
   display: block;
@@ -480,7 +480,4 @@ button {
 .error-wrapper .error-box button {
   float: none;
   margin: 20px auto;
-}
-.hide {
-  display: none;
 }
