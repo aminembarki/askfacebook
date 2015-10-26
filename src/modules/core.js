@@ -5,22 +5,40 @@
      */
     var coreController = function ($scope, localStorageService) {
 
-        var api = new chromeApi();
 
         this.getProfile = function () {
               if(this.isFacebook()){
-                  var data = api.loadDom();
-                  this.save('profile_id',api.getCurrentId(data));
-                  this.save('my_id',api.getMyId(data));
+                  this.save('profile_id', this.getCurrentId(data));
+                  this.save('my_id', this.getMyId(data));
               }
         };
         this.isFacebook = function () {
-            return api.isFacebook();
+            return true;
         };
         this.save = function (key, val) {
             console.log(this.loadDom());
             return localStorageService.set(key, val);
         }
+
+        this.getCurrentId = function ($dom) {
+
+            var m,
+                re = /(fb:\/\/profile\/)+(\d)+/g;
+
+            if ((m = re.exec($dom)) !== null){
+                return  m[0].replace( /^\D+/g, '');
+            }
+            return  null;
+        };
+        this.getMyId = function ($dom) {
+            var m,
+                re = /(profile_pic_header_)+(\d)+/g;
+
+            if ((m = re.exec($dom)) !== null) {
+                return  m[0].replace( /^\D+/g, '');
+            }
+            return  null;
+        };
 
     }
 
@@ -37,4 +55,4 @@
         .controller('coreController', coreController)
         .directive('errorPage', errorpageDirective);
 
-})(chromeApi);
+})();

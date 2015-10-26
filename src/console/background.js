@@ -1,41 +1,35 @@
 
-//chrome.runtime.onMessage.addListener(
-//    function(request, sender, sendResponse) {
-//        if(request.method == "getDom"){
-//            sendResponse({data: document.all[0].outerHTML}); //same as innerText
-//        }
-//        if(request.method == "getDomain"){
-//            sendResponse({data: document.domain}); //same as innerText
-//        }
-//    });
+var chromeApi = function () {
 
-chrome.browserAction.onClicked.addListener(function(tab) {
-    // No tabs or host permissions needed!
-    console.log('Turning ' + tab.url + ' red!');
-    chrome.tabs.executeScript({
-        code: 'document.body.style.backgroundColor="red"'
-    });
-});
 
-function updateSelected(tabId) {
-    console.log('Turning ' + tabId + ' red!');
+    this.loadDom = function () {
+        var dom = null;
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, {method: "getDom"}, function (response) {
+                if(response)
+                    dom = response.data;
+            });
+        });
+        return dom;
+    };
+    this.isFacebook = function () {
+        var val = false;
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, {method: "getDomain"}, function (response) {
+                if(response)
+                    val = (response.data.match('facebook.com') != null);
+            });
+        });
+        return val;
+    };
+
+
 }
-function updateAddress(tabId) {
-    console.log('Turning ' + tabId + ' red!');
-}
 
-chrome.tabs.onUpdated.addListener(function(tabId, change, tab) {
-    if (change.status == "complete") {
-        updateAddress(tabId);
-    }
-});
 
-chrome.tabs.onSelectionChanged.addListener(function(tabId, info) {
-    //selectedId = tabId;
-    updateSelected(tabId);
-});
+chrome.browserAction.setBadgeText({text: "1"});
 
-// Ensure the current selected tab is set up.
-chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    updateAddress(tabs[0].id);
+
+chrome.commands.onCommand.addListener(function(command) {
+    chrome.tabs.create({url: "https://www.facebook.com/"});
 });
