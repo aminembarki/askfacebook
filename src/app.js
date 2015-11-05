@@ -10,3 +10,4 @@
             .setPrefix(app.name);
     });
 })();
+
