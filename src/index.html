@@ -23,21 +23,23 @@
 
 <div ng-controller="coreController as main ">
     <nav-bar></nav-bar>
-    <error-page ng-hide="main.isFacebook()"></error-page>
 
-    <div id="preloader">
+
+    <div ng-show="main.page" id="preloader">
         <div class="clock">
             <div class="arrow_sec"></div>
             <div class="arrow_min"></div>
         </div>
     </div>
-    <div class="ask " ng-controller="coreController as core" ng-show="main.isFacebook()" ng-click="core.submit('amine','text')">
+    <div ng-hide="main.page">
+    <error-page ng-hide="main.isFacebook()"></error-page>
+    <div class="ask ng-scope " ng-controller="coreController as core" ng-show="main.isFacebook()">
 
         <div class="search">
-            <button class="button button--antiman button--round-l button--text-medium"><i class="button__icon icon icon-map-marker"></i><span><b>Get Profile</b></span></button>
+            <button class="button button--antiman button--round-l button--text-medium" ng-click="core.getProfile()"><i class="button__icon icon icon-map-marker"></i><span><b>Get Profile</b></span></button>
         </div>
 
-        <span class="currentid"><b>Amine Mbarki</b> <i class="icon-save">it's me</i></span>
+        <span class="currentid"> <i class="icon-save" >let's ask </i> <b>{{core.profile.name}}</b> :)</span>
         <ul class="tab">
             <li><a href="#personal">Personal</a></li>
             <li class="separator">/</li>
@@ -48,32 +50,32 @@
                 <ul class="questions">
                     <li>
                         <a href="https://www.facebook.com/search/100010045846665/stories-commented">
-                            Posts commented on by <span>Ahmed Mbarki</span>?
+                            Posts commented on by <span>you</span>?
                         </a>
                     </li>
                     <li>
                         <a href="https://www.facebook.com/search/100010045846665/stories-commented?_utmp=">
-                            Photos liked by <span>Ahmed Mbarki</span>?
+                            Photos liked by <span>you</span>?
                         </a>
                     </li>
                     <li>
                         <a href="https://www.facebook.com/search/100010045846665/photos-of">
-                            Photos of <span>Ahmed Mbarki</span>?
+                            Photos of <span>you</span>?
                         </a>
                     </li>
                     <li>
                         <a href="https://www.facebook.com/search/1456207913/photos-tagged">
-                            Photos tagged with <span>Ahmed Mbarki</span>?
+                            Photos tagged with <span>you</span>?
                         </a>
                     </li>
                     <li>
                         <a href="https://www.facebook.com/search/1456207913/photos-commented">
-                            Photos commented on by <span>Ahmed Mbarki</span>?
+                            Photos commented on by <span>you</span>?
                         </a>
                     </li>
                     <li>
                         <a href="https://www.facebook.com/search/100010045846665/friends/photos-uploaded">
-                            Photos uploaded by <span>Ahmed Mbarki</span>'s friends?
+                            Photos uploaded by <span>your</span> friends?
                         </a>
                     </li>
                 </ul>
@@ -92,13 +94,14 @@
                                 <option value="Movie theatres"> Movie theatres</option>
                                 <option value="Museum"> Museum</option>
                                 <option value="Restaurants">Restaurants</option>
-                            </select> visited by  <span>Ahmed Mbarki</span>?
+                            </select> visited by  <span>you</span>?
                         </a>
                     </li>
 
                 </ul>
             </div>
         </div>
+    </div>
     </div>
 
 </div>

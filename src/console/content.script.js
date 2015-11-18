@@ -1,14 +1,16 @@
 
 (function() {
 
-    var port = chrome.runtime.connect({name: "askfacebook"});
-    port.postMessage({joke: "Knock knock"});
-    port.onMessage.addListener(function(msg) {
-        console.log(msg);
-        var data = {domain: document.domain,content: document.all[0].outerHTML};
-        if (msg.question == "Who's there?")
-            port.postMessage(data);
-        else if (msg.question == "Madame who?")
-            port.postMessage({answer: "Madame... Bovary"});
+    var page = document.all[0].outerHTML;
+
+    chrome.runtime.sendMessage({page: page}, function(response) {
+        console.log(response);
     });
+
+    var domain = document.domain;
+    chrome.runtime.sendMessage({domain: domain}, function(response) {
+        console.log(response);
+    });
+
 })();
+

@@ -4,13 +4,16 @@
      * @desc Main application Controller
      */
     var mainController = function($scope) {
+
+        $scope.page = chrome.extension.getBackgroundPage();
+
         /**
          * @name isFacebook
          * @desc Does something awesome
          * @returns {Boolean}
          */
         this.isFacebook = function () {
-            return false;
+            return $scope.page.isfacebook;
         };
 
     }
@@ -35,15 +38,3 @@
 
 })();
 
-chrome.runtime.onConnect.addListener(function(port) {
-    console.assert(port.name == "askfacebook");
-    port.onMessage.addListener(function(msg) {
-        console.log(msg);
-        if (msg.joke == "Knock knock")
-            port.postMessage({question: "Who's there?"});
-        else if (msg.answer == "Madame")
-            port.postMessage({question: "Madame who?"});
-        else if (msg.answer == "Madame... Bovary")
-            port.postMessage({question: "I don't get it."});
-    });
-});

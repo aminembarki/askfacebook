@@ -5,19 +5,27 @@
      */
     var coreController = function ($scope, localStorageService) {
 
+        $scope.page = chrome.extension.getBackgroundPage();
+        $scope.profile = {};
 
         this.getProfile = function () {
-              if(this.isFacebook()){
-                  this.save('profile_id', this.getCurrentId(data));
-                  this.save('my_id', this.getMyId(data));
-              }
+            console.log('amine : '+ $scope.page.dom);
+            this.save('profile_id', this.getCurrentId($scope.page.dom));
+            this.save('my_id', this.getMyId($scope.page.dom));
+            this.save('profile_name', this.getName($scope.page.dom));
+            this.load();
         };
         this.isFacebook = function () {
-            return true;
+            return $scope.page.isfacebook;
         };
         this.save = function (key, val) {
-            console.log(this.loadDom());
             return localStorageService.set(key, val);
+        }
+
+        this.load = function(){
+            $scope.profile.me =localStorageService.get('my_id');
+            $scope.profile.id =localStorageService.get('profile_id');
+            $scope.profile.name =localStorageService.get('profile_name');
         }
 
         this.getCurrentId = function ($dom) {
@@ -29,6 +37,10 @@
                 return  m[0].replace( /^\D+/g, '');
             }
             return  null;
+        };
+        this.getName = function ($dom) {
+
+            return $($dom).find("#fb-timeline-cover-name").html() ;
         };
         this.getMyId = function ($dom) {
             var m,
