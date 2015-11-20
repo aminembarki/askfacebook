@@ -40,7 +40,7 @@
         };
         this.getName = function ($dom) {
 
-            return $($dom).find("#fb-timeline-cover-name").html() ;
+            return $($dom).find("#fb-timeline-cover-name").text() ;
         };
         this.getMyId = function ($dom) {
             var m,

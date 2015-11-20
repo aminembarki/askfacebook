@@ -39,7 +39,7 @@
             <button class="button button--antiman button--round-l button--text-medium" ng-click="core.getProfile()"><i class="button__icon icon icon-map-marker"></i><span><b>Get Profile</b></span></button>
         </div>
 
-        <span class="currentid"> <i class="icon-save" >let's ask </i> <b>{{core.profile.name}}</b> :)</span>
+        <span class="currentid"> <i class="icon-save" >let's ask </i> <b>{{profile.name}}</b> :)</span>
         <ul class="tab">
             <li><a href="#personal">Personal</a></li>
             <li class="separator">/</li>
@@ -49,32 +49,32 @@
             <div class="content" id="personal">
                 <ul class="questions">
                     <li>
-                        <a href="https://www.facebook.com/search/100010045846665/stories-commented">
+                        <a href="https://www.facebook.com/search/{{profile.id}}/stories-commented">
                             Posts commented on by <span>you</span>?
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.facebook.com/search/100010045846665/stories-commented?_utmp=">
+                        <a href="https://www.facebook.com/search/{{profile.id}}/stories-commented?_utmp=">
                             Photos liked by <span>you</span>?
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.facebook.com/search/100010045846665/photos-of">
+                        <a href="https://www.facebook.com/search/{{profile.id}}/photos-of">
                             Photos of <span>you</span>?
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.facebook.com/search/1456207913/photos-tagged">
+                        <a href="https://www.facebook.com/search/{{profile.id}}/photos-tagged">
                             Photos tagged with <span>you</span>?
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.facebook.com/search/1456207913/photos-commented">
+                        <a href="https://www.facebook.com/search/{{profile.id}}/photos-commented">
                             Photos commented on by <span>you</span>?
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.facebook.com/search/100010045846665/friends/photos-uploaded">
+                        <a href="https://www.facebook.com/search/{{profile.id}}/friends/photos-uploaded">
                             Photos uploaded by <span>your</span> friends?
                         </a>
                     </li>
@@ -83,9 +83,9 @@
             <div class="content" id="location">
                 <ul class="questions">
                     <li>
-                        <a href="https://www.facebook.com/search/1456207913/places-visited">
+                        <a href="https://www.facebook.com/search/{{profile.id}}/places-visited">
                             <select name="place" id="">
-                                <option value="https://www.facebook.com/search/100010045846665/places-visited">All Places</option>
+                                <option value="https://www.facebook.com/search/{{profile.id}}/places-visited">All Places</option>
                                 <option value="Bars">Bars</option>
                                 <option value="Beach">Beach</option>
                                 <option value="Bookstores">Bookstores</option>
