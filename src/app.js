@@ -19,6 +19,11 @@ var page = false;
             .setPrefix(app.name);
     });
 
+    $(".questions a").click(function(){
+        chrome.tabs.getSelected(null,function(tab) {
+            chrome.tabs.update(tab.id, {url: $(this).attr('href')});
+        });
+    });
 
 })();
 

@@ -9,12 +9,15 @@
         $scope.profile = {};
 
         this.getProfile = function () {
-            console.log('amine : '+ $scope.page.dom);
-            this.save('profile_id', this.getCurrentId($scope.page.dom));
-            this.save('my_id', this.getMyId($scope.page.dom));
-            this.save('profile_name', this.getName($scope.page.dom));
-            this.load();
+            var profile_id = this.getCurrentId($scope.page.dom);
+            if(profile_id.length > 0){
+                this.save('profile_id', profile_id);
+                this.save('my_id', this.getMyId($scope.page.dom));
+                this.save('profile_name', this.getName($scope.page.dom));
+                this.load();
+            }
         };
+
         this.isFacebook = function () {
             return $scope.page.isfacebook;
         };

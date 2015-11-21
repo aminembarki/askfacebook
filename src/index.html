@@ -33,7 +33,7 @@
     </div>
     <div ng-hide="main.page">
     <error-page ng-hide="main.isFacebook()"></error-page>
-    <div class="ask ng-scope " ng-controller="coreController as core" ng-show="main.isFacebook()">
+    <div class="ask ng-scope " ng-controller="coreController as core" ng-show="main.isFacebook()" data-ng-init="core.load()">
 
         <div class="search">
             <button class="button button--antiman button--round-l button--text-medium" ng-click="core.getProfile()"><i class="button__icon icon icon-map-marker"></i><span><b>Get Profile</b></span></button>
@@ -49,12 +49,12 @@
             <div class="content" id="personal">
                 <ul class="questions">
                     <li>
-                        <a href="https://www.facebook.com/search/{{profile.id}}/stories-commented">
+                        <a href="https://www.facebook.com/search/{{profile.id}}/stories-commented" >
                             Posts commented on by <span>you</span>?
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.facebook.com/search/{{profile.id}}/stories-commented?_utmp=">
+                        <a href="https://www.facebook.com/search/{{profile.id}}/stories-commented">
                             Photos liked by <span>you</span>?
                         </a>
                     </li>
