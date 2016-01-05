@@ -6,12 +6,10 @@
 
     <!-- Scripts -->
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/angular/angular.js"></script>
-    <script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-
-    <script src="/src/modules/core.js"></script>
-    <script src="/src/modules/main.js"></script>
+    <script src="/bower_components/handlebars/handlebars.runtime.min.js"></script>
+    <script src="/src/templatesCompiled.js"></script>
     <script src="/src/app.js"></script>
+
 
 
     <!-- Cascading Style Sheets -->
@@ -31,7 +29,7 @@
             <div class="arrow_min"></div>
         </div>
     </div>
-    <div class="ask " ng-controller="coreController as core" ng-show="main.isFacebook()" ng-click="core.submit('amine','text')">
+    <div class="ask " ng-controller="coreController as core" ng-show="!main.isFacebook()" ng-click="core.submit('amine','text')">
 
         <div class="search">
             <button class="button button--antiman button--round-l button--text-medium"><i class="button__icon icon icon-map-marker"></i><span><b>Get Profile</b></span></button>

@@ -1,13 +1,8 @@
-/**
- * @name App
- * @desc Main application Controller
- */
+var context = {
+    "name":"Ritesh Kumar",
+    "occupation" : "Developer"
+}
 
-(function(){
-    var app = angular.module('askFacebook',['mainController','coreController']);
-    app.config(function (localStorageServiceProvider) {
-        localStorageServiceProvider
-            .setPrefix(app.name);
-    });
-})();
+var templateScript = Handlebars.templates.error(context);
 
+document.write(templateScript);

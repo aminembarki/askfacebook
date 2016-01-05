@@ -1,8 +1,13 @@
-chrome.browserAction.setBadgeText({text: "1"});
 
-chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs.tab.id, {domain: "facebook.com"}, function(response) {
-        data = response;
-        console.log(data);
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        console.log(sender.tab ?
+        "from a content script:" + sender.tab.url :
+            "from the extension");
+        if(request.method == "getDom"){
+            sendResponse({data: document.all[0].outerHTML}); //same as innerText
+        }
+        if(request.method == "getDomain"){
+            sendResponse({data: document.domain}); //same as innerText
+        }
     });
-});

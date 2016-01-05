@@ -25,6 +25,7 @@
   "dependencies": {
     "angular": "~1.4.7",
     "jquery": "~2.1.4",
-    "angular-local-storage": "~0.2.2"
+    "angular-local-storage": "~0.2.2",
+    "handlebars": "~4.0.5"
   }
 }
