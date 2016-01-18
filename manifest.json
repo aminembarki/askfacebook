@@ -4,15 +4,6 @@
   "manifest_version": 2,
   "description": "Experimental Facebook Graph Search Engine chrome extension",
   "homepage_url": "http://google.com",
-  "content_scripts": [
-    {
-      "matches": [
-        "https://*.facebook.com/*"
-      ],
-      "js": ["src/console/background.js"],
-      "run_at": "document_idle"
-    }
-  ],
   "default_locale": "en",
   "permissions": [
     "cookies",
